@@ -1,0 +1,10 @@
+import { Sidebar } from '@/components/sidebar/sidebar';
+
+export default function AuthLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="flex h-screen bg-white">
+      <Sidebar />
+      <main className="flex-1 flex flex-col overflow-hidden">{children}</main>
+    </div>
+  );
+}
