@@ -85,7 +85,7 @@ export function ConversationList({
                 w-full text-left px-3 py-2.5 rounded-lg
                 transition-colors duration-150
                 group
-                ${isActive ? 'bg-gray-100 text-gray-900' : 'text-gray-700 hover:bg-gray-50'}
+                ${isActive ? 'bg-primary/10 text-primary font-medium' : 'text-gray-700 hover:bg-gray-50'}
               `}
             >
               <div className="flex items-start gap-2">

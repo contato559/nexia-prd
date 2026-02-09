@@ -28,7 +28,7 @@ export function AgentShortcutCard({
       onClick={() => onSelect(id)}
       className="
         bg-white border border-gray-200 rounded-xl p-6
-        hover:shadow-md hover:border-gray-300
+        hover:shadow-md hover:border-primary/40
         transition-all duration-200 cursor-pointer
         text-left w-full
         group

@@ -41,3 +41,5 @@ apps/api/uploads/
 # Misc
 *.tsbuildinfo
 .turbo
+.vercel
+.env*.local

@@ -1,5 +1,15 @@
-import { redirect } from 'next/navigation';
+'use client';
+
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function RootPage() {
-  redirect('/chat');
+  const router = useRouter();
+
+  useEffect(() => {
+    const name = localStorage.getItem('nexia-user-name');
+    router.replace(name ? '/chat' : '/login');
+  }, [router]);
+
+  return null;
 }

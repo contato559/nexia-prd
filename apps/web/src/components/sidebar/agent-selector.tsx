@@ -37,7 +37,7 @@ export function AgentSelector({ agents, selectedAgentId, onSelect }: AgentSelect
         <SelectTrigger className="w-full h-11 bg-white border-gray-200 rounded-lg hover:border-gray-300 transition-colors duration-150 focus:ring-2 focus:ring-gray-200 focus:ring-offset-0">
           <SelectValue placeholder="Selecione um agente" />
         </SelectTrigger>
-        <SelectContent className="rounded-xl border-gray-200 shadow-lg">
+        <SelectContent className="rounded-xl border-gray-200 shadow-lg z-[100]" position="popper" sideOffset={4}>
           {agents.map((agent) => (
             <SelectItem
               key={agent.id}

@@ -29,7 +29,7 @@ export function MessageBubble({ role, content, isStreaming, documents }: Message
           max-w-[70%] px-4 py-3
           ${
             isUser
-              ? 'bg-gray-900 text-white rounded-2xl rounded-br-md'
+              ? 'bg-primary text-white rounded-2xl rounded-br-md'
               : 'bg-gray-100 text-gray-900 rounded-2xl rounded-bl-md'
           }
         `}

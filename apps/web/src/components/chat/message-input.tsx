@@ -60,7 +60,7 @@ export function MessageInput({
             className="
               flex-1 resize-none rounded-xl border border-gray-300 px-4 py-3
               text-gray-900 placeholder:text-gray-400
-              focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent
+              focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent
               disabled:bg-gray-50 disabled:text-gray-500
               transition-shadow
             "
@@ -69,7 +69,7 @@ export function MessageInput({
             onClick={handleSubmit}
             disabled={disabled || !content.trim()}
             className="
-              bg-gray-900 hover:bg-gray-800 text-white rounded-xl px-4 py-3
+              bg-primary hover:bg-primary-hover text-white rounded-xl px-4 py-3
               disabled:bg-gray-300 disabled:cursor-not-allowed
               transition-colors
               flex items-center justify-center

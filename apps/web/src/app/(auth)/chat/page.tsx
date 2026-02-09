@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { WelcomeScreen } from '@/components/welcome';
 import { ChatContainer } from '@/components/chat';
 
@@ -26,11 +26,6 @@ const mockAgents = [
   },
 ];
 
-const mockUser = {
-  name: 'Ana Paula',
-  email: 'ana@exemplo.com',
-};
-
 interface Conversation {
   id: string;
   agentId: string;
@@ -38,6 +33,11 @@ interface Conversation {
 
 export default function ChatPage() {
   const [activeConversation, setActiveConversation] = useState<Conversation | null>(null);
+  const [userName, setUserName] = useState('');
+
+  useEffect(() => {
+    setUserName(localStorage.getItem('nexia-user-name') || 'Usuario');
+  }, []);
 
   const handleSelectAgent = async (agentId: string) => {
     // Para teste, criar uma conversa mock
@@ -58,7 +58,7 @@ export default function ChatPage() {
   if (!activeConversation) {
     return (
       <WelcomeScreen
-        userName={mockUser.name}
+        userName={userName}
         agents={mockAgents}
         onSelectAgent={handleSelectAgent}
       />
@@ -71,7 +71,7 @@ export default function ChatPage() {
   if (!activeAgent) {
     return (
       <WelcomeScreen
-        userName={mockUser.name}
+        userName={userName}
         agents={mockAgents}
         onSelectAgent={handleSelectAgent}
       />

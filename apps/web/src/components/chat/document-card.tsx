@@ -36,7 +36,7 @@ export function DocumentCard({ name, type, url, onDownload }: DocumentCardProps)
       </div>
       <button
         onClick={handleDownload}
-        className="bg-blue-600 hover:bg-blue-700 text-white rounded-lg px-3 py-1.5 text-sm font-medium transition-colors"
+        className="bg-primary hover:bg-primary-hover text-white rounded-lg px-3 py-1.5 text-sm font-medium transition-colors"
       >
         Baixar
       </button>
