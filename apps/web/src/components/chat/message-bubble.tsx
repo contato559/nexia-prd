@@ -29,31 +29,29 @@ export function MessageBubble({ role, content, isStreaming, documents }: Message
           max-w-[70%] px-4 py-3
           ${
             isUser
-              ? 'bg-primary text-white rounded-2xl rounded-br-md'
-              : 'bg-gray-100 text-gray-900 rounded-2xl rounded-bl-md'
+              ? 'bg-primary text-white rounded-2xl rounded-br-sm'
+              : 'bg-secondary text-foreground rounded-2xl rounded-bl-sm'
           }
         `}
       >
         {isUser ? (
           <p className="whitespace-pre-wrap">{content}</p>
         ) : (
-          <div className="prose prose-sm max-w-none prose-headings:mt-4 prose-headings:mb-2 prose-p:my-2 prose-ul:my-2 prose-ol:my-2 prose-li:my-0.5 prose-pre:bg-gray-800 prose-pre:text-gray-100 prose-code:text-pink-600 prose-code:bg-gray-200 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none">
+          <div className="prose prose-sm max-w-none prose-headings:mt-4 prose-headings:mb-2 prose-p:my-2 prose-ul:my-2 prose-ol:my-2 prose-li:my-0.5 prose-pre:bg-gray-800 prose-pre:text-gray-100 prose-code:text-primary prose-code:bg-primary/10 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none">
             <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeHighlight]}>
               {content}
             </ReactMarkdown>
           </div>
         )}
 
-        {/* Indicador de streaming */}
         {isStreaming && (
           <div className="flex items-center gap-1 mt-2">
-            <span className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce [animation-delay:-0.3s]" />
-            <span className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce [animation-delay:-0.15s]" />
-            <span className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce" />
+            <span className="w-1.5 h-1.5 bg-muted-foreground rounded-full animate-bounce [animation-delay:-0.3s]" />
+            <span className="w-1.5 h-1.5 bg-muted-foreground rounded-full animate-bounce [animation-delay:-0.15s]" />
+            <span className="w-1.5 h-1.5 bg-muted-foreground rounded-full animate-bounce" />
           </div>
         )}
 
-        {/* Documentos anexados */}
         {documents && documents.length > 0 && (
           <div className="mt-3 space-y-2">
             {documents.map((doc) => (
@@ -72,15 +70,14 @@ export function MessageBubble({ role, content, isStreaming, documents }: Message
   );
 }
 
-// Componente para indicador de "digitando"
 export function TypingIndicator() {
   return (
     <div className="flex justify-start mb-4">
-      <div className="bg-gray-100 rounded-2xl rounded-bl-md px-4 py-3">
+      <div className="bg-secondary rounded-2xl rounded-bl-sm px-4 py-3">
         <div className="flex items-center gap-1">
-          <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce [animation-delay:-0.3s]" />
-          <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce [animation-delay:-0.15s]" />
-          <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" />
+          <span className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce [animation-delay:-0.3s]" />
+          <span className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce [animation-delay:-0.15s]" />
+          <span className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce" />
         </div>
       </div>
     </div>

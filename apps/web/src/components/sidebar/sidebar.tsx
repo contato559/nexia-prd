@@ -8,6 +8,7 @@ import { UserMenu } from './user-menu';
 import { AgentSelector } from './agent-selector';
 import { ConversationList } from './conversation-list';
 import { useApp } from '@/contexts/app-context';
+import { ChatIcon, FolderIcon, SettingsIcon, LogOutIcon } from '@/components/icons';
 
 const mockAgents = [
   {
@@ -74,28 +75,28 @@ export function Sidebar() {
   };
 
   return (
-    <aside className="w-[280px] h-screen flex flex-col bg-gray-50 border-r border-gray-200">
+    <aside className="w-[280px] h-screen flex flex-col bg-secondary border-r border-border">
       {/* Header - Logo */}
-      <div className="px-4 py-5">
+      <div className="px-4 py-4">
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
             <span className="text-white text-sm font-bold">N</span>
           </div>
           <div>
-            <h1 className="text-base font-semibold text-gray-900">Nexia PRD</h1>
-            <p className="text-xs text-gray-500">Gerador de Docs</p>
+            <h1 className="text-base font-semibold text-foreground">Nexia PRD</h1>
+            <p className="text-xs text-muted-foreground">Gerador de Docs</p>
           </div>
         </div>
       </div>
 
-      <Separator className="bg-gray-200" />
+      <Separator />
 
       {/* User Menu */}
       <div className="px-3 py-3">
         <UserMenu />
       </div>
 
-      <Separator className="bg-gray-200" />
+      <Separator />
 
       {/* Navigation: Chat / Materiais */}
       <div className="px-3 py-3 flex gap-2">
@@ -104,7 +105,7 @@ export function Sidebar() {
           className={`flex-1 flex items-center justify-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
             activeView === 'chat'
               ? 'bg-primary text-white'
-              : 'text-gray-600 hover:bg-gray-100'
+              : 'text-muted-foreground hover:bg-accent'
           }`}
         >
           <ChatIcon className="w-4 h-4" />
@@ -115,7 +116,7 @@ export function Sidebar() {
           className={`flex-1 flex items-center justify-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
             activeView === 'materials'
               ? 'bg-primary text-white'
-              : 'text-gray-600 hover:bg-gray-100'
+              : 'text-muted-foreground hover:bg-accent'
           }`}
         >
           <FolderIcon className="w-4 h-4" />
@@ -123,13 +124,13 @@ export function Sidebar() {
         </button>
       </div>
 
-      <Separator className="bg-gray-200" />
+      <Separator />
 
       {/* Nova Conversa + Agent Selector */}
       <div className="px-4 py-4 space-y-4">
         <Button
           variant="outline"
-          className="w-full h-10 justify-start gap-2 rounded-lg border-primary/30 text-primary hover:bg-primary/5 hover:border-primary/50 transition-colors duration-150"
+          className="w-full h-10 justify-start gap-2 rounded-lg border-primary/30 text-primary hover:bg-primary/5 hover:border-primary/50 transition-colors"
           onClick={handleNewConversation}
         >
           <span className="text-lg">+</span>
@@ -143,11 +144,11 @@ export function Sidebar() {
         />
       </div>
 
-      <Separator className="bg-gray-200" />
+      <Separator />
 
       {/* Historico Label */}
       <div className="px-5 pt-4 pb-2">
-        <span className="text-xs font-medium uppercase tracking-wider text-gray-500">
+        <span className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
           Historico
         </span>
       </div>
@@ -161,37 +162,25 @@ export function Sidebar() {
 
       {/* Footer */}
       <div className="mt-auto">
-        <Separator className="bg-gray-200" />
+        <Separator />
         <div className="px-3 py-3 space-y-1">
-          <button className="w-full flex items-center gap-2 px-3 py-2 text-sm text-gray-600 rounded-lg hover:bg-gray-100 transition-colors duration-150">
-            <span>⚙️</span>
+          <button
+            className="w-full flex items-center gap-2 px-3 py-2 text-sm text-muted-foreground rounded-lg hover:bg-accent transition-colors"
+            aria-label="Configuracoes"
+          >
+            <SettingsIcon className="w-4 h-4" />
             <span>Configuracoes</span>
           </button>
           <button
             onClick={handleLogout}
-            className="w-full flex items-center gap-2 px-3 py-2 text-sm text-gray-600 rounded-lg hover:bg-gray-100 transition-colors duration-150"
+            className="w-full flex items-center gap-2 px-3 py-2 text-sm text-muted-foreground rounded-lg hover:bg-accent transition-colors"
+            aria-label="Sair"
           >
-            <span>🚪</span>
+            <LogOutIcon className="w-4 h-4" />
             <span>Sair</span>
           </button>
         </div>
       </div>
     </aside>
-  );
-}
-
-function ChatIcon({ className }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-    </svg>
-  );
-}
-
-function FolderIcon({ className }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" />
-    </svg>
   );
 }

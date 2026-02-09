@@ -1,5 +1,7 @@
 'use client';
 
+import { AgentIcon } from '@/components/icons';
+
 interface AgentShortcutCardProps {
   id: string;
   name: string;
@@ -8,12 +10,6 @@ interface AgentShortcutCardProps {
   onSelect: (agentId: string) => void;
 }
 
-const agentIcons: Record<string, string> = {
-  'prd-generator': '📋',
-  'escopo-comercial': '💼',
-  'escopo-tecnico': '⚙️',
-};
-
 export function AgentShortcutCard({
   id,
   name,
@@ -21,24 +17,22 @@ export function AgentShortcutCard({
   description,
   onSelect,
 }: AgentShortcutCardProps) {
-  const icon = agentIcons[slug] || '🤖';
-
   return (
     <button
       onClick={() => onSelect(id)}
       className="
-        bg-white border border-gray-200 rounded-xl p-6
-        hover:shadow-md hover:border-primary/40
-        transition-all duration-200 cursor-pointer
+        bg-background border border-border rounded-lg p-6
+        hover:shadow-md hover:border-primary/30
+        transition-all cursor-pointer
         text-left w-full
         group
       "
     >
-      <div className="text-3xl mb-4 group-hover:scale-110 transition-transform duration-200">
-        {icon}
+      <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+        <AgentIcon slug={slug} className="w-5 h-5 text-primary" />
       </div>
-      <h3 className="font-semibold text-gray-900 mb-1">{name}</h3>
-      <p className="text-sm text-gray-500 leading-relaxed">{description}</p>
+      <h3 className="font-semibold text-foreground mb-1">{name}</h3>
+      <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
     </button>
   );
 }

@@ -1,5 +1,7 @@
 'use client';
 
+import { DocTypeIcon } from '@/components/icons';
+
 interface DocumentCardProps {
   id: string;
   name: string;
@@ -7,11 +9,6 @@ interface DocumentCardProps {
   url: string;
   onDownload?: (url: string) => void;
 }
-
-const typeIcons: Record<string, string> = {
-  docx: '📄',
-  pdf: '📕',
-};
 
 const typeLabels: Record<string, string> = {
   docx: 'Word',
@@ -28,15 +25,16 @@ export function DocumentCard({ name, type, url, onDownload }: DocumentCardProps)
   };
 
   return (
-    <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 inline-flex items-center gap-3 mt-3">
-      <span className="text-2xl">{typeIcons[type] || '📄'}</span>
+    <div className="bg-secondary border border-border rounded-lg p-4 inline-flex items-center gap-3 mt-3">
+      <DocTypeIcon type={type} className="w-6 h-6 text-muted-foreground" />
       <div className="flex-1 min-w-0">
-        <p className="font-medium text-gray-900 truncate">{name}</p>
-        <p className="text-xs text-gray-500">{typeLabels[type] || type.toUpperCase()}</p>
+        <p className="font-medium text-foreground truncate">{name}</p>
+        <p className="text-xs text-muted-foreground">{typeLabels[type] || type.toUpperCase()}</p>
       </div>
       <button
         onClick={handleDownload}
         className="bg-primary hover:bg-primary-hover text-white rounded-lg px-3 py-1.5 text-sm font-medium transition-colors"
+        aria-label={`Baixar ${name}`}
       >
         Baixar
       </button>

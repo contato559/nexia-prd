@@ -1,5 +1,7 @@
 'use client';
 
+import { AgentIcon } from '@/components/icons';
+
 interface Conversation {
   id: string;
   title: string;
@@ -48,12 +50,6 @@ function formatRelativeDate(dateString: string): string {
   return date.toLocaleDateString('pt-BR', { day: '2-digit', month: 'short' });
 }
 
-const agentIcons: Record<string, string> = {
-  'prd-generator': '📋',
-  'escopo-comercial': '💼',
-  'escopo-tecnico': '⚙️',
-};
-
 export function ConversationList({
   conversations,
   activeConversationId,
@@ -62,7 +58,7 @@ export function ConversationList({
   if (conversations.length === 0) {
     return (
       <div className="flex-1 flex items-center justify-center px-4 py-8">
-        <p className="text-sm text-gray-400 text-center">
+        <p className="text-sm text-muted-foreground text-center">
           Nenhuma conversa ainda.
           <br />
           Comece uma nova!
@@ -83,20 +79,21 @@ export function ConversationList({
               onClick={() => onSelect(conversation.id)}
               className={`
                 w-full text-left px-3 py-2.5 rounded-lg
-                transition-colors duration-150
+                transition-colors
                 group
-                ${isActive ? 'bg-primary/10 text-primary font-medium' : 'text-gray-700 hover:bg-gray-50'}
+                ${isActive ? 'bg-primary/10 text-primary font-medium' : 'text-foreground hover:bg-accent'}
               `}
             >
               <div className="flex items-start gap-2">
-                <span className="text-sm mt-0.5 opacity-70">
-                  {agentIcons[conversation.agent.slug] || '💬'}
-                </span>
+                <AgentIcon
+                  slug={conversation.agent.slug}
+                  className={`w-4 h-4 mt-0.5 ${isActive ? 'text-primary' : 'text-muted-foreground'}`}
+                />
                 <div className="flex-1 min-w-0">
                   <p className={`text-sm truncate ${isActive ? 'font-medium' : 'font-normal'}`}>
                     {conversation.title}
                   </p>
-                  <p className="text-xs text-gray-400 mt-0.5">
+                  <p className="text-xs text-muted-foreground mt-0.5">
                     {formatRelativeDate(conversation.updatedAt)}
                   </p>
                 </div>

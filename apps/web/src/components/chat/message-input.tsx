@@ -16,7 +16,6 @@ export function MessageInput({
   const [content, setContent] = useState('');
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
-  // Auto-resize do textarea
   useEffect(() => {
     const textarea = textareaRef.current;
     if (textarea) {
@@ -30,7 +29,6 @@ export function MessageInput({
     if (trimmedContent && !disabled) {
       onSend(trimmedContent);
       setContent('');
-      // Reset altura do textarea
       if (textareaRef.current) {
         textareaRef.current.style.height = 'auto';
       }
@@ -38,7 +36,6 @@ export function MessageInput({
   };
 
   const handleKeyDown = (e: KeyboardEvent<HTMLTextAreaElement>) => {
-    // Enter envia, Shift+Enter nova linha
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       handleSubmit();
@@ -46,7 +43,7 @@ export function MessageInput({
   };
 
   return (
-    <div className="border-t border-gray-200 p-4 bg-white">
+    <div className="border-t border-border p-4 bg-background">
       <div className="max-w-3xl mx-auto">
         <div className="flex items-end gap-3">
           <textarea
@@ -58,10 +55,10 @@ export function MessageInput({
             placeholder={placeholder}
             rows={1}
             className="
-              flex-1 resize-none rounded-xl border border-gray-300 px-4 py-3
-              text-gray-900 placeholder:text-gray-400
+              flex-1 resize-none rounded-lg border border-border px-4 py-3
+              text-foreground placeholder:text-muted-foreground
               focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent
-              disabled:bg-gray-50 disabled:text-gray-500
+              disabled:bg-secondary disabled:text-muted-foreground
               transition-shadow
             "
           />
@@ -69,16 +66,17 @@ export function MessageInput({
             onClick={handleSubmit}
             disabled={disabled || !content.trim()}
             className="
-              bg-primary hover:bg-primary-hover text-white rounded-xl px-4 py-3
-              disabled:bg-gray-300 disabled:cursor-not-allowed
+              bg-primary hover:bg-primary-hover text-white rounded-lg px-4 py-3
+              disabled:bg-muted disabled:cursor-not-allowed
               transition-colors
               flex items-center justify-center
             "
+            aria-label="Enviar mensagem"
           >
             <SendIcon className="w-5 h-5" />
           </button>
         </div>
-        <p className="text-xs text-gray-400 mt-2 text-center">
+        <p className="text-xs text-muted-foreground mt-2 text-center">
           Pressione Enter para enviar, Shift + Enter para nova linha
         </p>
       </div>
@@ -86,7 +84,6 @@ export function MessageInput({
   );
 }
 
-// Ícone de enviar em SVG
 function SendIcon({ className }: { className?: string }) {
   return (
     <svg

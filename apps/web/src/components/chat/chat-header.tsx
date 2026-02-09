@@ -8,11 +8,11 @@ interface ChatHeaderProps {
 
 export function ChatHeader({ agentName, agentDescription, onExport }: ChatHeaderProps) {
   return (
-    <header className="border-b border-gray-200 p-4 bg-white">
+    <header className="border-b border-border p-4 bg-background">
       <div className="max-w-3xl mx-auto flex items-center justify-between">
         <div className="flex-1 min-w-0">
-          <h2 className="font-semibold text-gray-900 truncate">{agentName}</h2>
-          <p className="text-sm text-gray-500 truncate">{agentDescription}</p>
+          <h2 className="font-semibold text-foreground truncate">{agentName}</h2>
+          <p className="text-sm text-muted-foreground truncate">{agentDescription}</p>
         </div>
         {onExport && (
           <button
@@ -34,7 +34,6 @@ export function ChatHeader({ agentName, agentDescription, onExport }: ChatHeader
   );
 }
 
-// Ícone de exportar em SVG
 function ExportIcon({ className }: { className?: string }) {
   return (
     <svg

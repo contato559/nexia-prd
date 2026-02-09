@@ -7,6 +7,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import { AgentIcon } from '@/components/icons';
 
 interface Agent {
   id: string;
@@ -21,34 +22,28 @@ interface AgentSelectorProps {
   onSelect: (agentId: string) => void;
 }
 
-const agentIcons: Record<string, string> = {
-  'prd-generator': '📋',
-  'escopo-comercial': '💼',
-  'escopo-tecnico': '⚙️',
-};
-
 export function AgentSelector({ agents, selectedAgentId, onSelect }: AgentSelectorProps) {
   return (
     <div className="space-y-2">
-      <label className="text-xs font-medium uppercase tracking-wider text-gray-500 px-1">
+      <label className="text-xs font-medium uppercase tracking-wider text-muted-foreground px-1">
         Agente
       </label>
       <Select value={selectedAgentId} onValueChange={onSelect}>
-        <SelectTrigger className="w-full h-11 bg-white border-gray-200 rounded-lg hover:border-gray-300 transition-colors duration-150 focus:ring-2 focus:ring-gray-200 focus:ring-offset-0">
+        <SelectTrigger className="w-full h-10 bg-background border-border rounded-lg hover:border-muted-foreground/30 transition-colors focus:ring-2 focus:ring-primary/20 focus:ring-offset-0">
           <SelectValue placeholder="Selecione um agente" />
         </SelectTrigger>
-        <SelectContent className="rounded-xl border-gray-200 shadow-lg z-[100]" position="popper" sideOffset={4}>
+        <SelectContent className="rounded-lg border-border shadow-lg z-[100]" position="popper" sideOffset={4}>
           {agents.map((agent) => (
             <SelectItem
               key={agent.id}
               value={agent.id}
-              className="rounded-lg cursor-pointer focus:bg-gray-100"
+              className="rounded-lg cursor-pointer focus:bg-accent"
             >
               <div className="flex items-center gap-2">
-                <span className="text-base">{agentIcons[agent.slug] || '🤖'}</span>
+                <AgentIcon slug={agent.slug} className="w-4 h-4 text-muted-foreground" />
                 <div className="flex flex-col">
-                  <span className="font-medium text-gray-900">{agent.name}</span>
-                  <span className="text-xs text-gray-500 line-clamp-1">{agent.description}</span>
+                  <span className="font-medium text-foreground">{agent.name}</span>
+                  <span className="text-xs text-muted-foreground line-clamp-1">{agent.description}</span>
                 </div>
               </div>
             </SelectItem>

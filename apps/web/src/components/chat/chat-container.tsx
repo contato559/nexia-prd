@@ -27,7 +27,7 @@ export function ChatContainer({ conversationId, agent, onExport }: ChatContainer
   });
 
   return (
-    <div className="flex flex-col h-full bg-white">
+    <div className="flex flex-col h-full bg-background">
       <ChatHeader agentName={agent.name} agentDescription={agent.description} onExport={onExport} />
 
       <MessageList messages={messages} isLoading={isLoading} streamingContent={streamingContent} />

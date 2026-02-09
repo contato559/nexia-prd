@@ -16,19 +16,19 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
+    <div className="min-h-screen flex items-center justify-center bg-secondary">
       <div className="w-full max-w-sm px-6">
         <div className="text-center mb-8">
           <div className="w-14 h-14 rounded-2xl bg-primary flex items-center justify-center mx-auto mb-4">
             <span className="text-white text-2xl font-bold">N</span>
           </div>
-          <h1 className="text-2xl font-semibold text-gray-900">Nexia PRD</h1>
-          <p className="text-sm text-gray-500 mt-1">Gerador de documentos com IA</p>
+          <h1 className="text-2xl font-semibold text-foreground">Nexia PRD</h1>
+          <p className="text-sm text-muted-foreground mt-1">Gerador de documentos com IA</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+            <label htmlFor="name" className="block text-sm font-medium text-foreground mb-1">
               Seu nome
             </label>
             <input
@@ -38,13 +38,13 @@ export default function LoginPage() {
               onChange={(e) => setName(e.target.value)}
               placeholder="Digite seu nome"
               autoFocus
-              className="w-full px-4 py-3 rounded-xl border border-gray-300 text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-shadow"
+              className="w-full px-4 py-3 rounded-lg border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-shadow bg-background"
             />
           </div>
           <button
             type="submit"
             disabled={!name.trim()}
-            className="w-full py-3 rounded-xl bg-primary hover:bg-primary-hover text-white font-medium transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed"
+            className="w-full py-3 rounded-lg bg-primary hover:bg-primary-hover text-white font-medium transition-colors disabled:bg-muted disabled:cursor-not-allowed"
           >
             Entrar
           </button>
